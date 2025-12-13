@@ -1,0 +1,95 @@
+@page "/basic-operations"
+
+<h1 class="display-1">Basic Operations</h1>
+
+<div class="row">
+    <div class="column">
+        <label for="argument1">First one:</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="argument1" 
+            placeholder="Enter first argument" 
+            @bind="argument1" />
+    </div>
+
+    <div class="column">
+        <label for="argument2">Second one:</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="argument2" 
+            placeholder="Enter second argument" 
+            @bind="argument2" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="d-flex justify-content-center">
+        <button 
+            type="button" 
+            class="btn btn-primary mx-2 my-2" 
+            @onclick="DoTheAddition">+</button>
+
+        <button 
+            type="button" 
+            class="btn btn-info mx-2 my-2" 
+            @onclick="DoSubtraction">-</button>
+
+        <button 
+            type="button" 
+            class="btn btn-warning mx-2 my-2" 
+            @onclick="DoMultiplication">x</button>
+
+        <button 
+            type="button" 
+            class="btn btn-danger mx-2 my-2" 
+            @onclick="DoDivision">/</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column">
+        <label for="result">Result:</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="result" 
+            placeholder="Result" 
+            @bind="result" />
+    </div>
+</div>
+
+@code {
+
+    double argument1;
+    double argument2;
+    double result;
+
+    void DoTheAddition()
+    {
+        result = argument1 + argument2;
+    }
+
+    void DoSubtraction()
+    {
+        result = argument1 - argument2;
+    }
+
+    void DoMultiplication()
+    {
+        result = argument1 * argument2;
+    }
+
+    void DoDivision()
+    {
+        if (argument2 != 0)
+        {
+            result = argument1 / argument2;
+        }
+        else
+        {
+            result = 0;
+        }
+    }
+}
