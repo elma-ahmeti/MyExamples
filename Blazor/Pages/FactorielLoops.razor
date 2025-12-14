@@ -1,0 +1,156 @@
+@page "/factoriel-while"
+
+<PageTitle>Factoriel</PageTitle>
+<h1 class="display-2">Factoriel</h1>
+
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="n" placeholder="Enter n" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-primary w-10" @onclick="FactorielW">Factoriel</button>
+    </div>
+    <div class="col-4 align-items-center">
+        Result: @result
+    </div>
+</div>
+
+
+
+
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="n2" placeholder="Enter n2" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-danger w-10" @onclick="FactorielWD">Factoriel</button>
+    </div>
+    <div class="col-4 align-items-center">
+        Result: @result2
+    </div>
+</div>
+
+
+
+
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="n3" placeholder="Enter n3" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-warning w-10" @onclick="FactorielD">Factoriel</button>
+    </div>
+    <div class="col-4 align-items-center">
+        Result: @result3
+    </div>
+</div>
+
+
+
+
+
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="n4" placeholder="Enter n4" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-secondary w-10" @onclick="FactorielDD">Factoriel</button>
+    </div>
+    <div class="col-4 align-items-center">
+        Result: @result4
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="n5" placeholder="Enter n5" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-success w-10" @onclick="FactorielF">Factoriel</button>
+    </div>
+    <div class="col-4 align-items-center">
+        Result: @result5
+    </div>
+</div>
+
+
+
+@code {
+    uint n;
+    uint n2;
+    uint n3;
+    uint n4;
+    uint n5;
+
+    ulong result;
+    ulong result2;
+    ulong result3;
+    ulong result4;
+    ulong result5;
+
+    void FactorielW()
+    {
+        result = 1;
+        uint counter = 1;
+        while (counter <= n)
+        {
+            result *= counter;
+            counter++;
+        }
+    }
+
+    void FactorielWD()
+    {
+        result2 = 1;
+        uint counter = n2;
+        while (counter > 0)
+        {
+            result2 *= counter;
+            counter--;
+        }
+    }
+
+    void FactorielD()
+    {
+        result3 = 1;
+        uint counter = 1;
+
+        if (n3 == 0) return;
+
+        do
+        {
+            result3 *= counter;
+            counter++;
+        }
+        while (counter <= n3);
+    }
+
+    void FactorielDD()
+    {
+        uint counter = n4;
+        result4 = 1;
+
+        if (n4 == 0) return;
+
+        do
+        {
+            result4 *= counter;
+            counter--;
+        }
+        while (counter >= 1);
+    }
+
+    void FactorielF()
+    {
+        result5 = 1;
+        for (uint counter = 1; counter <= n5; counter++)
+        {
+            result5 *= counter;
+        }
+    }
+}
