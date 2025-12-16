@@ -1,0 +1,154 @@
+@page "/power"
+
+<PageTitle>Power</PageTitle>
+<h1 class="display-2">Power</h1>
+
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="text" class="form-control" @bind="x" placeholder="Enter x" />
+    </div>
+
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="n" placeholder="Enter n" />
+    </div>
+
+    <div class="row my-1 align-items-center">
+        <div class="col-4">
+            <button class="btn btn-primary w-10" @onclick="PowerWhile">Power</button>
+            <button class="btn btn-secondary w-10" @onclick="PowerWhileDown">Power</button>
+            <button class="btn btn-warning w-10" @onclick="PowerDoWhile">Power</button>
+            <button class="btn btn-danger w-10" @onclick="PowerFor">Power</button>
+        </div>
+    </div>
+</div>
+
+<div class="row my-1 align-items-center">
+
+    <div class="col-4 align-items-center">
+        Result: @result
+    </div>
+</div>
+
+@code {
+
+    double x = 1;
+    int n = 1;
+    double result = 1;
+
+    void PowerWhile()
+    {
+        result = 1;
+        int counter = 1;
+        if (n >= 0)
+        {
+
+
+            while (counter <= n)
+
+            {
+                result *= x;
+                counter++;
+            }
+        }
+        else
+        {
+            while (counter <= -n)
+
+            {
+                result /= x;
+                counter++;
+            }
+
+        }
+    }
+    void PowerWhileDown()
+    {
+        result = 1;
+        bool expIsNegative = false;
+        if (n < 0)
+        {
+            expIsNegative = true;
+        }
+
+        int counter;
+        if (expIsNegative)
+            counter = -n;
+        else
+            counter = n;
+
+        while (counter > 0)
+        {
+            result *= x;
+            counter--;
+        }
+        if (expIsNegative)
+        {
+            result = 1 / result;
+        }
+
+    }
+
+    void PowerDoWhile()
+    {
+        result = 1;
+        if (n == 0)
+        {
+            return;
+        }
+        bool isNegativeExp;
+        int absN;
+        if (n > 0)
+        {
+            isNegativeExp = false;
+            absN = n;
+        }
+        else
+        {
+            isNegativeExp = true;
+            absN = -n;
+        }
+        if (n >= 0)
+            isNegativeExp = false;
+        else
+            isNegativeExp = true;
+        int counter = 0;
+        do
+        {
+            if (!isNegativeExp)
+                result *= x;
+            else
+                result /= x;
+            counter++;
+        } while (counter < absN);
+
+    }
+    void PowerFor()
+    {
+        result = 1;
+        if (n == 0)
+        {
+            result = 1;
+            return;
+        }
+        bool isNegativeExp;
+        int positiveExp;
+        if (n > 0)
+        {
+            isNegativeExp = false;
+            positiveExp = n;
+        }
+
+        else
+        {
+            isNegativeExp = true;
+            positiveExp = -n;
+        }
+        for (int counter = 0; counter < positiveExp; counter++)
+        {
+            if (isNegativeExp)
+                result /= x;
+            else
+                result *= x;
+        }
+    }
+}

@@ -78,6 +78,18 @@
     </div>
 </div>
 
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="n6" placeholder="Enter n6" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-warning w-10" @onclick="FactorielForDown">Factoriel</button>
+    </div>
+    <div class="col-4 align-items-center">
+        Result: @result6
+    </div>
+</div>
+
 
 
 @code {
@@ -86,12 +98,14 @@
     uint n3;
     uint n4;
     uint n5;
+    uint n6;
 
     ulong result;
     ulong result2;
     ulong result3;
     ulong result4;
     ulong result5;
+    ulong result6;
 
     void FactorielW()
     {
@@ -151,6 +165,15 @@
         for (uint counter = 1; counter <= n5; counter++)
         {
             result5 *= counter;
+        }
+    }
+
+        void FactorielForDown()
+    {
+        result6 = 1;
+        for (uint counter = n6; counter >= 1; counter--)
+        {
+            result6 *= counter;
         }
     }
 }
