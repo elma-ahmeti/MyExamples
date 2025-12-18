@@ -1,0 +1,44 @@
+@page "/project-double-factoriel"
+
+<PageTitle>Double Factoriel</PageTitle>
+<h1 class="display-3 align-items-center">Double Factoriel</h1>
+
+<div class="row my-1 align-items-center">
+    <div class="col-4">
+        <input type="number" class="form-control" @bind="number" placeholder="Enter number" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-primary w-10" @onclick="DoubleFactoriel">Double Factoriel</button>
+    </div>
+    <div class="col-4 align-items-center">
+        Result: @result
+    </div>
+</div>
+
+@code
+{
+    uint number = 1;
+    ulong result = 1;
+    void DoubleFactoriel()
+    {
+        Console.WriteLine(number);
+        result = CalculateDoubleFactoriel(number);
+        Console.WriteLine(result);
+    }
+    ulong CalculateDoubleFactoriel(uint nn)
+    {
+        ulong rezultat = 1;
+        if (nn % 2 == 0)
+        {
+            for (uint counter = 2; counter <= nn; counter += 2) // 2,4,6,8,10,12,14
+                rezultat *= counter; // 14 rezultat=rezultat*counter
+            return rezultat;
+        }
+        else
+        {
+            for (uint counter = 1; counter <= nn; counter += 2)
+                rezultat *= counter;
+            return rezultat;
+        }
+    }
+}
